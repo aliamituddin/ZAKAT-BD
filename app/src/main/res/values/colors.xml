@@ -3,6 +3,10 @@
     <color name="colorPrimary">#e45b8b</color>
     <color name="colorPrimaryDark">#C2185B</color>
     <color name="colorAccent">#55c0fd</color>
+    <color name="colorAppBg">#FFFFFF</color>
+
+    <!-- Blur Effect -->
+    <color name="colorOverlay">#78ffffff</color>
 
     <!-- Splash Screen -->
     <color name="colorSplashBackground">#e45b8b</color>

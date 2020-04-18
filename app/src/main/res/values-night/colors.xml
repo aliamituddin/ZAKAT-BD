@@ -3,6 +3,7 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#e45b8b</color>
+    <color name="colorAppBg">#000000</color>
 
     <!-- Splash Screen -->
     <color name="colorSplashBackground">#000000</color>

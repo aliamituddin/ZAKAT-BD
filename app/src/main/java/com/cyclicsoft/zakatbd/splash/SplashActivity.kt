@@ -7,6 +7,7 @@ import com.cyclicsoft.zakatbd.MainActivity
 import com.cyclicsoft.zakatbd.R
 import com.cyclicsoft.zakatbd.Util
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
 
