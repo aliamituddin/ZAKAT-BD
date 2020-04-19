@@ -45,10 +45,10 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="100dp"
                     app:cardBackgroundColor="@color/colorSplashBackground"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="2dp">
+                    android:minHeight="@dimen/height_card"
+                    app:cardCornerRadius="@dimen/corner_radius_card"
+                    app:cardElevation="@dimen/elevation_card">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -75,6 +75,317 @@
                             android:layout_weight="2" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/height_card"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:minHeight="@dimen/height_card"
+                        app:cardBackgroundColor="@color/colorFajrBg"
+                        app:cardCornerRadius="@dimen/corner_radius_card"
+                        app:cardElevation="@dimen/elevation_card">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_fajr_icon"
+                                android:layout_width="@dimen/icon_size_card"
+                                android:layout_height="@dimen/icon_size_card"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="@dimen/margin_card_ic"
+                                android:layout_marginEnd="@dimen/margin_card_ic"
+                                android:src="@drawable/ic_fajr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_fajr_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/tv_fajr"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="@dimen/padding_start_card_text"
+                                android:layout_toStartOf="@id/iv_fajr_icon"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:text="@string/txt_time"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_time"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_fajr"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:paddingBottom="@dimen/padding_start_card_text"
+                                android:text="@string/txt_fajr"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_title"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/height_card"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:minHeight="@dimen/height_card"
+                        app:cardBackgroundColor="@color/colorDuhrBg"
+                        app:cardCornerRadius="@dimen/corner_radius_card"
+                        app:cardElevation="@dimen/elevation_card">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_duhr_icon"
+                                android:layout_width="@dimen/icon_size_card"
+                                android:layout_height="@dimen/icon_size_card"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="@dimen/margin_card_ic"
+                                android:layout_marginEnd="@dimen/margin_card_ic"
+                                android:src="@drawable/ic_duhr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_duhr_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/tv_duhr"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="@dimen/padding_start_card_text"
+                                android:layout_toStartOf="@id/iv_duhr_icon"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:text="@string/txt_time"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_time"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_duhr"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:paddingBottom="@dimen/padding_start_card_text"
+                                android:text="@string/txt_duhr"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_title"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_card"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/height_card"
+                        android:layout_marginEnd="@dimen/margin_between_card"
+                        android:layout_weight="1"
+                        android:minHeight="@dimen/height_card"
+                        app:cardBackgroundColor="@color/colorAsrBg"
+                        app:cardCornerRadius="@dimen/corner_radius_card"
+                        app:cardElevation="@dimen/elevation_card">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_asr_icon"
+                                android:layout_width="@dimen/icon_size_card"
+                                android:layout_height="@dimen/icon_size_card"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="@dimen/margin_card_ic"
+                                android:layout_marginEnd="@dimen/margin_card_ic"
+                                android:src="@drawable/ic_asr" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_asr_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/tv_asr"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="@dimen/padding_start_card_text"
+                                android:layout_toStartOf="@id/iv_asr_icon"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:text="@string/txt_time"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_time"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_asr"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:paddingBottom="@dimen/padding_start_card_text"
+                                android:text="@string/txt_asr"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_title"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/height_card"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:minHeight="@dimen/height_card"
+                        app:cardBackgroundColor="@color/colorMagribBg"
+                        app:cardCornerRadius="@dimen/corner_radius_card"
+                        app:cardElevation="@dimen/elevation_card">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_magrib_icon"
+                                android:layout_width="@dimen/icon_size_card"
+                                android:layout_height="@dimen/icon_size_card"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="@dimen/margin_card_ic"
+                                android:layout_marginEnd="@dimen/margin_card_ic"
+                                android:src="@drawable/ic_magrib" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_magrib_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/tv_magrib"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="@dimen/padding_start_card_text"
+                                android:layout_toStartOf="@id/iv_magrib_icon"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:text="@string/txt_time"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_time"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_magrib"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:paddingBottom="@dimen/padding_start_card_text"
+                                android:text="@string/txt_magrib"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_title"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_between_card"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/height_card"
+                        android:layout_marginEnd="@dimen/margin_between_card"
+                        android:layout_weight="1"
+                        android:minHeight="@dimen/height_card"
+                        app:cardBackgroundColor="@color/colorIshaBg"
+                        app:cardCornerRadius="@dimen/corner_radius_card"
+                        app:cardElevation="@dimen/elevation_card">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_isha_icon"
+                                android:layout_width="@dimen/icon_size_card"
+                                android:layout_height="@dimen/icon_size_card"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="@dimen/margin_card_ic"
+                                android:layout_marginEnd="@dimen/margin_card_ic"
+                                android:src="@drawable/ic_isha" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_isha_time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/tv_isha"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginTop="@dimen/padding_start_card_text"
+                                android:layout_toStartOf="@id/iv_isha_icon"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:text="@string/txt_time"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_time"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tv_isha"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:paddingStart="@dimen/padding_start_card_text"
+                                android:paddingEnd="@dimen/padding_start_card_text"
+                                android:paddingBottom="@dimen/padding_start_card_text"
+                                android:text="@string/txt_isha"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/txt_size_card_title"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

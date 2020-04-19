@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="height_toolbar">65dp</dimen>
+    <dimen name="height_card">105dp</dimen>
+    <dimen name="corner_radius_card">15dp</dimen>
+    <dimen name="elevation_card">2dp</dimen>
+    <dimen name="icon_size_card">36dp</dimen>
+    <dimen name="margin_card_ic">10dp</dimen>
+    <dimen name="padding_start_card_text">15dp</dimen>
+    <dimen name="txt_size_card_time">18sp</dimen>
+    <dimen name="txt_size_card_title">20sp</dimen>
+    <dimen name="margin_between_card">15dp</dimen>
 </resources>

@@ -8,6 +8,8 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorAppBg</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="fontFamily">sans-serif-condensed</item>
     </style>
 
     <!-- Splash Screen -->

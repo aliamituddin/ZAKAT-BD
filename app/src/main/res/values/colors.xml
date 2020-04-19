@@ -4,10 +4,19 @@
     <color name="colorPrimaryDark">#C2185B</color>
     <color name="colorAccent">#55c0fd</color>
     <color name="colorAppBg">#FFFFFF</color>
+    <color name="colorText">#FFFFFF</color>
 
     <!-- Blur Effect -->
     <color name="colorOverlay">#78ffffff</color>
 
     <!-- Splash Screen -->
     <color name="colorSplashBackground">#e45b8b</color>
+
+    <!-- Home -->
+    <color name="colorFajrBg">#69E781</color>
+    <color name="colorDuhrBg">#ff3366</color>
+    <color name="colorAsrBg">#03a9f4</color>
+    <color name="colorMagribBg">#673ab7</color>
+    <color name="colorIshaBg">#212121</color>
+
 </resources>
