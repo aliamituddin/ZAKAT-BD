@@ -24,6 +24,15 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 dependencies {
@@ -35,6 +44,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha06'
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.eightbitlab:blurview:1.6.3'
+    implementation ("com.squareup.okhttp3:okhttp:4.5.0")
+    implementation "com.squareup.okhttp3:logging-interceptor:4.5.0"
+    implementation ("com.squareup.retrofit2:retrofit:2.8.1"){
+        // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
+        exclude module: 'okhttp'
+    }
+    implementation "com.squareup.retrofit2:converter-gson:2.8.1"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
