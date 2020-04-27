@@ -13,20 +13,116 @@ data class Data(
 
     @SerializedName("timings") val timings: Timings,
     @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta,
+    @SerializedName("1") val jan: List<Jan>,
+    @SerializedName("2") val feb: List<Feb>,
+    @SerializedName("3") val mar: List<Mar>,
+    @SerializedName("4") val apr: List<Apr>,
+    @SerializedName("5") val may: List<May>,
+    @SerializedName("6") val jun: List<Jun>,
+    @SerializedName("7") val jul: List<Jul>,
+    @SerializedName("8") val aug: List<Aug>,
+    @SerializedName("9") val sep: List<Sep>,
+    @SerializedName("10") val oct: List<Oct>,
+    @SerializedName("11") val nov: List<Nov>,
+    @SerializedName("12") val dec: List<Dec>
+)
+
+data class Jan(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Feb(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Mar(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Apr(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class May(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Jun(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Jul(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Aug(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Sep(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Oct(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Nov(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
+    @SerializedName("meta") val meta: Meta
+)
+
+data class Dec(
+
+    @SerializedName("timings") val timings: Timings,
+    @SerializedName("date") val date: Date,
     @SerializedName("meta") val meta: Meta
 )
 
 data class Timings(
 
-    @SerializedName("Fajr") val fajr: String,
-    @SerializedName("Sunrise") val sunrise: String,
-    @SerializedName("Dhuhr") val dhuhr: String,
-    @SerializedName("Asr") val asr: String,
-    @SerializedName("Sunset") val sunset: String,
-    @SerializedName("Maghrib") val maghrib: String,
-    @SerializedName("Isha") val isha: String,
-    @SerializedName("Imsak") val imsak: String,
-    @SerializedName("Midnight") val midnight: String
+    @SerializedName("Fajr") var fajr: String,
+    @SerializedName("Sunrise") var sunrise: String,
+    @SerializedName("Dhuhr") var dhuhr: String,
+    @SerializedName("Asr") var asr: String,
+    @SerializedName("Sunset") var sunset: String,
+    @SerializedName("Maghrib") var maghrib: String,
+    @SerializedName("Isha") var isha: String,
+    @SerializedName("Imsak") var imsak: String,
+    @SerializedName("Midnight") var midnight: String
 )
 
 data class Date(
@@ -88,19 +184,21 @@ data class Offset(
     @SerializedName("Asr") val asr: Int,
     @SerializedName("Maghrib") val maghrib: Int,
     @SerializedName("Sunset") val sunset: Int,
-    @SerializedName("Isha") val isha: Int,
+    @SerializedName("Isha") val isha: String,
     @SerializedName("Midnight") val midnight: Int
 )
 
 data class Weekday(
 
-    @SerializedName("en") val en: String
+    @SerializedName("en") val en: String,
+    @SerializedName("ar") val ar: String
 )
 
 data class Month(
 
     @SerializedName("number") val number: Int,
-    @SerializedName("en") val en: String
+    @SerializedName("en") val en: String,
+    @SerializedName("ar") val ar: String
 )
 
 data class Designation(
@@ -111,6 +209,6 @@ data class Designation(
 
 data class Params(
 
-    @SerializedName("Fajr") val fajr: Int,
-    @SerializedName("Isha") val isha: Int
+    @SerializedName("Fajr") val fajr: Double,
+    @SerializedName("Isha") val isha: String
 )

@@ -3,23 +3,36 @@ package com.cyclicsoft.zakatbd.splash
 import android.animation.Animator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.cyclicsoft.zakatbd.MainActivity
 import com.cyclicsoft.zakatbd.R
 import com.cyclicsoft.zakatbd.Util
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var splashViewModel: SplashViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        init()
-        anim_loading?.playAnimation()
+        splashViewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
+        bindObservers()
+        initListener()
+        bindData()
     }
 
-    private fun init() {
-        anim_loading?.repeatCount=1 //Number of loading animation will play
+    private fun bindData() {
+        splashViewModel.loadData()
+    }
+
+    private fun bindObservers() {
+        splashViewModel.isDataLoaded.observe(this, Observer {
+            anim_loading.repeatCount = 1
+        })
+    }
+
+    private fun initListener() {
         anim_loading?.addAnimatorListener(object: Animator.AnimatorListener {
             override fun onAnimationRepeat(animation: Animator?) {
             }
@@ -28,7 +41,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationCancel(animation: Animator?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Util.gotoActivity(this@SplashActivity, MainActivity(), false)
             }
 
             override fun onAnimationStart(animation: Animator?) {

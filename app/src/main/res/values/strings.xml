@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ZAKAT BD</string>
-    <string name="txt_time">05:50  pm</string>
+    <string name="txt_time">Refresh</string>
     <string name="txt_fajr">FAZAR</string>
     <string name="txt_duhr">DUHR</string>
     <string name="txt_isha">ISHA</string>

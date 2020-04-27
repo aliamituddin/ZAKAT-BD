@@ -1,84 +1,93 @@
 package com.cyclicsoft.zakatbd
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.cyclicsoft.zakatbd.home.model.ServiceBuilder
-import com.cyclicsoft.zakatbd.home.model.TimingData
-import com.cyclicsoft.zakatbd.home.model.TimingDataEndPoint
-import com.google.gson.Gson
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.cyclicsoft.zakatbd.home.model.HomeViewModel
+import com.cyclicsoft.zakatbd.home.model.Timings
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import eightbitlab.com.blurview.RenderScriptBlur
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_toolbar.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
-import com.cyclicsoft.zakatbd.PreferenceHelper.get
-import com.cyclicsoft.zakatbd.PreferenceHelper.set
-import com.cyclicsoft.zakatbd.home.model.Timings
-
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        private val TAG = MainActivity::class.java.simpleName
+        val TAG = MainActivity::class.java.simpleName
     }
-    private var timingData: TimingData? = null
-    private lateinit var prefs: SharedPreferences
-    override fun onStart() {
-        prefs = PreferenceHelper.defaultPrefs(applicationContext)
-        super.onStart()
-    }
+
+    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        setupBlurView()
-        setupViws()
-        callTimingApi()
+        setUpToolBar()
+        bindViews()
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        observeViewModelData()
+        initListeners()
+        bindData()
+        //Do not change calling order
     }
 
-    private fun callTimingApi() {
-        val request = ServiceBuilder.buildService(TimingDataEndPoint::class.java)
-        val call = request.getTimings(22.5931, 89.3168, 2)
+    private fun bindViews() {
+        setupBlurView()
+    }
 
-        call.enqueue(object : Callback<TimingData> {
-            override fun onResponse(call: Call<TimingData>, response: Response<TimingData>) {
-                if (response.isSuccessful) {
-                    timingData = response.body()
-                    saveData(Gson().toJson(timingData?.data?.timings))
-                }
-            }
+    private fun observeViewModelData() {
+        homeViewModel.prayerTimings.observe(this, Observer {
+            updatePrayerTimingUi(it)
+        })
 
-            override fun onFailure(call: Call<TimingData>, t: Throwable) {
-                Log.d("Call", "${t.message}")
-                Toast.makeText(this@MainActivity, "${t.message}", Toast.LENGTH_SHORT).show()
-            }
+        homeViewModel.errMsg.observe(this, Observer {
+            showError(it)
         })
     }
 
-    private fun saveData(timingJson: String?) {
-        //set any type of value in prefs
-        prefs[AppConstants.KEY_PRAYER_TIMING] = timingJson
-        //get any value from prefs
-        val prayerTimings: String? = prefs[AppConstants.KEY_PRAYER_TIMING]
-        updatePrayerTimingUi(prayerTimings)
-        Log.d(TAG, "$prayerTimings")
+    private fun initListeners() {
     }
 
-    private fun updatePrayerTimingUi(prayerTimings: String?) {
-        val timings = Gson().fromJson(prayerTimings, Timings::class.java)
-        tv_fajr_time?.text = timings?.fajr
-        tv_duhr_time?.text = timings?.dhuhr
-        tv_asr_time?.text = timings?.asr
-        tv_magrib_time?.text = timings?.maghrib
-        tv_isha_time?.text = timings?.isha
+    private fun bindData() {
+        Log.d(TAG + AppConstants.TAG_TIMING_API, "initUpdateData()")
+        homeViewModel.loadTimingData()
+
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener { location : Location? ->
+//                Log.d(TAG + AppConstants.TAG_TIMING_API,
+//                    "fusedLocationClient.lastLocation.addOnSuccessListener >>>Location $location"
+//                )
+//                homeViewModel.requestTimingData(location, DateTime().year, Errors.UNKNOWN, Errors.UNKNOWN, AppConstants.REQUEST_CODE_LOCATION)
+//            }
+////            homeViewModel.requestTimingData(null, DateTime().year, "Paikgacha", "Bangladesh", AppConstants.REQUEST_CODE_ADDRESS)
+
+    }
+
+    private fun updatePrayerTimingUi(prayerTimings: Timings) {
+        Log.d(
+            TAG + ":" + AppConstants.TAG_TIMING_API,
+            "updatePrayerTimingUi(\n" +
+                    "prayerTimings: $prayerTimings\n" +
+                    ")"
+        )
+        tv_fajr_time?.text = prayerTimings.fajr
+        tv_duhr_time?.text = prayerTimings.dhuhr
+        tv_asr_time?.text = prayerTimings.asr
+        tv_magrib_time?.text = prayerTimings.maghrib
+        tv_isha_time?.text = prayerTimings.isha
+    }
 
 
+    private fun showError(msg: String?) {
+        //TODO...make a nice ui
+        if (!msg.isNullOrBlank())
+            Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
 
     private fun setupBlurView() {
@@ -94,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             .setHasFixedTransformationMatrix(true)
     }
 
-    private fun setupViws() {
+    private fun setUpToolBar() {
         img_toolbar_left?.setImageResource(R.drawable.ic_help_outline_black_24dp)
         img_toolbar_left?.visibility = View.VISIBLE
 
